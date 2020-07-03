@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>GPA Calculator - calculate your grades</title>
+    <title>Grade Calculator - Calculate your grades</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
     <script src='https://kit.fontawesome.com/a076d05399.js'></script>
     <link rel="stylesheet" href="css/styles.css">
@@ -57,23 +57,19 @@
                             <td>39 - 0</td>
                         </tr>
                     </table>
-                    <!-- <div>
-                        <p>Credit &times; Gradepoint = TotalPoint</p>
-                        <p>TotalPoint / TotalCredit = GPA</p>
-                    </div> -->
                 </div>
             </div>
         </div>
     </main>
 
     <script>
+        //create the variables
         let dataEntryTable = document.querySelector('.data_entry_table');
         let addNewButton = document.querySelector('.add_new_button');
-        let calculateGpa = document.querySelector('.calculate_gpa');
+        let calculateGrade = document.querySelector('.calculate_gpa');
         let clearButton = document.querySelector('.clear_button');
-        // let creditArray = [];
-        // let totalPoint = [];
-
+        
+        //click event for the add new button
         addNewButton.addEventListener('click', add = (event)=>{
             let newRow = document.createElement('tr');
             let firstTableData = document.createElement('td');
@@ -85,25 +81,26 @@
             let thirdColumnSpan = document.createElement('span');
             thirdColumnSpan.textContent = 'x';
             firstTableData.appendChild(firstInput);
-            
             thirdTableData.appendChild(thirdColumnSpan);
             newRow.appendChild(firstTableData);
             newRow.appendChild(secondTableData);
             newRow.appendChild(thirdTableData);
             dataEntryTable.appendChild(newRow);
 
+            //click event for the clear button
             clearButton.addEventListener('click', clearTable = () =>{
-            // dataEntryTable.removeChild(dataEntryTable.childNodes[1])
                 newRow.style.display = 'none';
             })
 
+            //click event for the cancel button
             thirdTableData.addEventListener('click', ()=>{
                 firstTableData.style.display = 'none';
                 secondTableData.style.display = 'none';
                 thirdTableData.style.display = 'none';
             })
 
-            calculateGpa.addEventListener('click', ()=>{
+            //click event for the calculate grade button
+            calculateGrade.addEventListener('click', ()=>{
                 let score = firstInput.value;
                 if(score >= 70 && score <= 100){
                     secondTableData.textContent = 'A';
@@ -123,61 +120,11 @@
                 else{
                     secondTableData.textContent = '';
                 }
-                
-            //     switch(secondTableData.textContent){
-            //     case 'A':
-            //         totalPoint.push(secondInput.value * 4);
-            //     break;
-            //     case 'B':
-            //         totalPoint.push(secondInput.value * 3);
-            //     break;
-            //     case 'C':
-            //         totalPoint.push(secondInput.value * 2);
-            //     break;
-            //     case 'D':
-            //         totalPoint.push(secondInput.value * 1);
-            //     break;
-            //     case 'F':
-            //         totalPoint.push(secondInput.value * 0);
-            //     break;
-            // }
-            // console.log(totalPoint)                
-
-            //     const totalPointSum = totalPoint.reduce((a,b) =>{
-            //         return a + b;
-            //     })
-            //     console.log(totalPointSum)
-
-            //     creditArray.push(parseInt(secondInput.value));
-            //     console.log(creditArray);
-            //     const creditSum = creditArray.reduce((a, b) =>{
-            //         return a + b;
-            //     })
-            //     console.log(creditSum)
-
-            //     console.log(totalPointSum / creditSum)
-
-            //     let resultRow = document.createElement('tr');
-            //     gradeTableTitle = document.createElement('td');
-            //     gradeTableTitle.textContent = 'GPA';
-            //     gradeTableTitle.setAttribute('colspan', '3')
-            //     gradeTableData = document.createElement('td');
-            //     cancelIcon = document.createElement('td');
-            //     cancelIcon.textContent = 'X';
-            //     gradeTableInput = document.createElement('input');
-            //     gradeTableData.appendChild(gradeTableInput);
-            //     resultRow.appendChild(gradeTableTitle);
-            //     resultRow.appendChild(gradeTableData);
-            //     resultRow.appendChild(cancelIcon);
-            //     dataEntryTable.appendChild(resultRow);
             })
 
             
         })
         
-        
-
-        console.log(dataEntryTable);
         
     </script>
 </body>
