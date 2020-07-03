@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>GPA Calculator - calculate your grades</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    <script src='https://kit.fontawesome.com/a076d05399.js'></script>
     <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
@@ -21,9 +22,9 @@
             </table>
 
             <div class="button_container">
-                <button class="add_new_button btn btn-success"> Add New +</button>
-                <button class="calculate_gpa btn btn-primary"> Calculate Grade &#127891;</button>
-                <button class="clear_button btn btn-danger"> Clear</button>
+                <button class="add_new_button btn btn-success"> Add New </button>
+                <button class="calculate_gpa btn btn-primary"> Calculate Grade <i class='fas fa-graduation-cap'></i></button>
+                <button class="clear_button btn btn-danger"> Clear <i class="fas fa-trash"></i></button>
             </div>
 
             <div>
@@ -79,10 +80,8 @@
             let secondTableData = document.createElement('td');
             secondTableData.style.color = 'white';
             let thirdTableData = document.createElement('td');
+            thirdTableData.style.cursor = 'pointer';
             let firstInput = document.createElement('input');
-            
-            
-            
             let thirdColumnSpan = document.createElement('span');
             thirdColumnSpan.textContent = 'x';
             firstTableData.appendChild(firstInput);
@@ -93,7 +92,16 @@
             newRow.appendChild(thirdTableData);
             dataEntryTable.appendChild(newRow);
 
-            
+            clearButton.addEventListener('click', clearTable = () =>{
+            // dataEntryTable.removeChild(dataEntryTable.childNodes[1])
+                newRow.style.display = 'none';
+            })
+
+            thirdTableData.addEventListener('click', ()=>{
+                firstTableData.style.display = 'none';
+                secondTableData.style.display = 'none';
+                thirdTableData.style.display = 'none';
+            })
 
             calculateGpa.addEventListener('click', ()=>{
                 let score = firstInput.value;
@@ -167,9 +175,7 @@
             
         })
         
-        clearButton.addEventListener('click', clearTable = () =>{
-            dataEntryTable.removeChild(dataEntryTable.childNodes[0])
-        })
+        
 
         console.log(dataEntryTable);
         

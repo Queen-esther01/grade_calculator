@@ -1,10 +1,11 @@
 body{
     margin: 0;
     padding: 0;
+    height: 100vh;
     background: linear-gradient(90deg,#b6b4c2, #e5c1cd);
 }
 h1{
-    padding-top: 50px;
+    padding-top: 30px;
     text-align: center;
 }
 .data_entry_table{
@@ -20,21 +21,32 @@ th,td{
 input{
     text-align: center;
     margin: auto;
-    width: 50%;
+   
 }
 .button_container{
     text-align: center;
     margin-top: 20px;
 }
+.add_new_button::after{
+    content: '\002b';
+    margin-left: 10px;
+    float: right;
+}
+i{
+    margin-left: 10px;
+    margin-top: 5px;
+    float: right;
+}
 h2{
     padding-left: 50px;
     margin-top: 50px;
+    font-size: 20px;
 }
 .grade_table{
     padding-left: 50px;
 }
 .table-striped{
-    width: 400px;
+    width: 300px;
     color: black;
 }
 .table-striped th{
