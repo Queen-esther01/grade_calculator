@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GPA Calculator - calculate your grades</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <main>
+        <header>
+            <h1>What's your GRADE?</h1>
+        </header>
+        <div>
+            <table class="data_entry_table table table-dark">
+                <tr>
+                    <th>Score</th>
+                    <th>Grade</th>
+                </tr>
+            </table>
+
+            <div class="button_container">
+                <button class="add_new_button btn btn-success"> Add New +</button>
+                <button class="calculate_gpa btn btn-primary"> Calculate Grade &#127891;</button>
+                <button class="clear_button btn btn-danger"> Clear</button>
+            </div>
+
+            <div>
+                <h2>How grades are calculated</h2>
+                <div class="grade_table">
+                    <table class="table table-striped">
+                        <caption>Grade Table</caption>
+                        <tr>
+                            <th>Grade</th>
+                            <th>Points</th>
+                        </tr>
+                        <tr>
+                            <td>A</td>
+                            <td>100-70</td>
+                        </tr>
+                        <tr>
+                            <td>B</td>
+                            <td>69 - 60</td>
+                        </tr>
+                        <tr>
+                            <td>C</td>
+                            <td>59 - 50</td>
+                        </tr>
+                        <tr>
+                            <td>D</td>
+                            <td>49 - 40</td>
+                        </tr>
+                        <tr>
+                            <td>F</td>
+                            <td>39 - 0</td>
+                        </tr>
+                    </table>
+                    <!-- <div>
+                        <p>Credit &times; Gradepoint = TotalPoint</p>
+                        <p>TotalPoint / TotalCredit = GPA</p>
+                    </div> -->
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        let dataEntryTable = document.querySelector('.data_entry_table');
+        let addNewButton = document.querySelector('.add_new_button');
+        let calculateGpa = document.querySelector('.calculate_gpa');
+        let clearButton = document.querySelector('.clear_button');
+        // let creditArray = [];
+        // let totalPoint = [];
+
+        addNewButton.addEventListener('click', add = (event)=>{
+            let newRow = document.createElement('tr');
+            let firstTableData = document.createElement('td');
+            let secondTableData = document.createElement('td');
+            secondTableData.style.color = 'white';
+            let thirdTableData = document.createElement('td');
+            let firstInput = document.createElement('input');
+            
+            
+            
+            let thirdColumnSpan = document.createElement('span');
+            thirdColumnSpan.textContent = 'x';
+            firstTableData.appendChild(firstInput);
+            
+            thirdTableData.appendChild(thirdColumnSpan);
+            newRow.appendChild(firstTableData);
+            newRow.appendChild(secondTableData);
+            newRow.appendChild(thirdTableData);
+            dataEntryTable.appendChild(newRow);
+
+            
+
+            calculateGpa.addEventListener('click', ()=>{
+                let score = firstInput.value;
+                if(score >= 70 && score <= 100){
+                    secondTableData.textContent = 'A';
+                }
+                else if(score >= 60 && score <= 69){
+                    secondTableData.textContent = 'B';
+                }
+                else if(score >= 50 && score <= 59){
+                    secondTableData.textContent = 'C';
+                }
+                else if(score >= 45 && score <= 49){
+                    secondTableData.textContent = 'D';
+                }
+                else if(score === 0 || score <= 48){
+                    secondTableData.textContent = 'F';
+                }
+                else{
+                    secondTableData.textContent = '';
+                }
+                
+            //     switch(secondTableData.textContent){
+            //     case 'A':
+            //         totalPoint.push(secondInput.value * 4);
+            //     break;
+            //     case 'B':
+            //         totalPoint.push(secondInput.value * 3);
+            //     break;
+            //     case 'C':
+            //         totalPoint.push(secondInput.value * 2);
+            //     break;
+            //     case 'D':
+            //         totalPoint.push(secondInput.value * 1);
+            //     break;
+            //     case 'F':
+            //         totalPoint.push(secondInput.value * 0);
+            //     break;
+            // }
+            // console.log(totalPoint)                
+
+            //     const totalPointSum = totalPoint.reduce((a,b) =>{
+            //         return a + b;
+            //     })
+            //     console.log(totalPointSum)
+
+            //     creditArray.push(parseInt(secondInput.value));
+            //     console.log(creditArray);
+            //     const creditSum = creditArray.reduce((a, b) =>{
+            //         return a + b;
+            //     })
+            //     console.log(creditSum)
+
+            //     console.log(totalPointSum / creditSum)
+
+            //     let resultRow = document.createElement('tr');
+            //     gradeTableTitle = document.createElement('td');
+            //     gradeTableTitle.textContent = 'GPA';
+            //     gradeTableTitle.setAttribute('colspan', '3')
+            //     gradeTableData = document.createElement('td');
+            //     cancelIcon = document.createElement('td');
+            //     cancelIcon.textContent = 'X';
+            //     gradeTableInput = document.createElement('input');
+            //     gradeTableData.appendChild(gradeTableInput);
+            //     resultRow.appendChild(gradeTableTitle);
+            //     resultRow.appendChild(gradeTableData);
+            //     resultRow.appendChild(cancelIcon);
+            //     dataEntryTable.appendChild(resultRow);
+            })
+
+            
+        })
+        
+        clearButton.addEventListener('click', clearTable = () =>{
+            dataEntryTable.removeChild(dataEntryTable.childNodes[0])
+        })
+
+        console.log(dataEntryTable);
+        
+    </script>
+</body>
+</html>
